@@ -3,7 +3,8 @@ import time
 import numpy as np
 
 
-lib = cdll.LoadLibrary('./libcus.so')
+# lib = cdll.LoadLibrary('./libcus.so')
+lib = cdll.LoadLibrary('./libspmm.so')
 lib.prepare()
 
 if __name__ == '__main__':

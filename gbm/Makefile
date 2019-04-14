@@ -1,4 +1,6 @@
-libcus.so : cusparse.cu
+derfault : libspmm.so
+
+lib%.so : %.cu
 	nvcc --compiler-options -fPIC --std=c++11 -c $< -o $@.o
 	nvcc -shared $@.o -lcusparse -lcublas -o $@
 
