@@ -105,11 +105,9 @@ inline double getDuration(std::chrono::time_point<std::chrono::system_clock> a,
 
 #define timestamp(__var__) auto __var__ = std::chrono::system_clock::now();
 
-
-double runOnce() {
-    float alpha = 1.;
-    float beta = 0.;
-    timestamp(t1);
+void runit() {
+    static float alpha = 1.;
+    static float beta = 0.;
     auto gemmStat = cublasSgemm(cublasH, CUBLAS_OP_N, CUBLAS_OP_N,
             n, feature_1, feature_0, &alpha,
             f0, n,
@@ -119,10 +117,15 @@ double runOnce() {
             n, feature_1, n, m, &alpha,
             descrA, gval, gptr, gidx,
             f1, n, &beta, f2, n);
-    cudaStreamSynchronize(stream);
-    timestamp(t2);
     assert(gemmStat == CUBLAS_STATUS_SUCCESS);
     assert(csrmmStat == CUSPARSE_STATUS_SUCCESS);
+    cudaStreamSynchronize(stream);
+}
+
+double runOnce() {
+    timestamp(t1);
+    runit();
+    timestamp(t2);
     float* curf = new float[n * feature_1];
     cudaMemcpy(curf, f2, sizeof(float) * n * feature_1, cudaMemcpyDeviceToHost);
     float csum(0);
@@ -132,6 +135,15 @@ double runOnce() {
     fprintf(stderr, "Chksum = %.3f, time = %lf s\n", csum, getDuration(t1, t2));
     delete [] curf;
     return getDuration(t1, t2);
+}
+
+extern "C" {
+    void prepare() {
+        prepareData();
+    }
+    void run() {
+        runit();
+    }
 }
 
 int main() {
