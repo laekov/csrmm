@@ -1,0 +1,37 @@
+==43349== NVPROF is profiling process 43349, command: python3 -u dgm.py
+/home/laekov/miniconda3/lib/python3.7/site-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+==43349== Profiling application: python3 -u dgm.py
+==43349== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   28.35%  18.503ms         1  18.503ms  18.503ms  18.503ms  void kernelTransformReduceInnermostDimIndex<long, long, MaxValuePair<long, long>>(long*, long*, long*, unsigned int, unsigned int, thrust::pair<long, long>, long)
+                   28.34%  18.494ms         1  18.494ms  18.494ms  18.494ms  void kernelTransformReduceInnermostDimIndex<long, long, MinValuePair<long, long>>(long*, long*, long*, unsigned int, unsigned int, thrust::pair<long, long>, long)
+                   16.77%  10.944ms        10  1.0944ms  1.0855ms  1.1052ms  void THCudaTensor_scatterAddKernel<unsigned int, float, int=2>(TensorInfo<float, unsigned int>, TensorInfo<float, unsigned int>, TensorInfo<long, unsigned int>, int, unsigned int)
+                   15.79%  10.305ms         4  2.5762ms  1.3440us  8.1064ms  [CUDA memcpy HtoD]
+                    5.43%  3.5446ms        10  354.46us  353.08us  355.84us  void indexSelectLargeIndex<float, unsigned int, int=2, int=2, int=-2, bool=1>(TensorInfo<float, unsigned int>, TensorInfo<float, unsigned int>, TensorInfo<long, unsigned int>, int, int, unsigned int, unsigned int, long)
+                    2.65%  1.7266ms        10  172.66us  171.55us  173.60us  _ZN2at6native18elementwise_kernelILi128ELi4EZNS0_17gpu_binary_kernelIZNS0_15mul_kernel_implIfEEvRNS_14TensorIteratorEEUlffE_EEvS5_RKT_EUliE0_EEviT1_
+                    2.55%  1.6626ms        10  166.26us  164.45us  168.96us  sgemm_32x32x32_NN
+                    0.07%  47.616us        10  4.7610us  4.5760us  5.0880us  [CUDA memcpy DtoD]
+                    0.05%  34.208us        11  3.1090us  2.6560us  7.4560us  void kernelPointwiseApply1<TensorFillOp<float>, float, unsigned int, int=1>(OffsetInfo<TensorFillOp<float>, float, unsigned int>, float, float)
+                    0.00%  2.8160us         2  1.4080us  1.1840us  1.6320us  [CUDA memcpy DtoH]
+      API calls:   87.53%  4.57723s        13  352.09ms  12.546us  4.57317s  cudaMalloc
+                   11.18%  584.53ms         1  584.53ms  584.53ms  584.53ms  cudaFree
+                    0.91%  47.719ms        15  3.1813ms  18.794us  37.020ms  cudaMemcpyAsync
+                    0.32%  16.724ms         2  8.3622ms  320.16us  16.404ms  cudaGetDeviceProperties
+                    0.02%  1.1428ms        53  21.562us  14.041us  102.57us  cudaLaunchKernel
+                    0.01%  729.62us       189  3.8600us     133ns  171.12us  cuDeviceGetAttribute
+                    0.01%  505.84us         2  252.92us  226.04us  279.80us  cuDeviceTotalMem
+                    0.01%  401.89us         5  80.377us  4.7470us  171.46us  cudaStreamSynchronize
+                    0.01%  290.18us       555     522ns     286ns  9.9120us  cudaGetDevice
+                    0.00%  137.10us       195     703ns     362ns  6.5620us  cudaSetDevice
+                    0.00%  79.361us         2  39.680us  37.958us  41.403us  cuDeviceGetName
+                    0.00%  23.306us         1  23.306us  23.306us  23.306us  cudaMemcpy
+                    0.00%  19.541us        53     368ns     238ns  3.3130us  cudaGetLastError
+                    0.00%  12.396us        11  1.1260us     304ns  8.0710us  cudaDeviceGetAttribute
+                    0.00%  11.414us        16     713ns     487ns  2.1470us  cudaEventCreateWithFlags
+                    0.00%  4.0940us        13     314ns     145ns  1.1550us  cudaGetDeviceCount
+                    0.00%  3.2770us         3  1.0920us     379ns  1.6210us  cuDeviceGetCount
+                    0.00%  1.3750us         1  1.3750us  1.3750us  1.3750us  cuInit
+                    0.00%     940ns         3     313ns     297ns     330ns  cuDeviceGet
+                    0.00%     762ns         1     762ns     762ns     762ns  cuDriverGetVersion
+                    0.00%     594ns         2     297ns     286ns     308ns

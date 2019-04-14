@@ -1,0 +1,50 @@
+==43610== NVPROF is profiling process 43610, command: python3 -u orig_py.py
+==43610== Profiling application: python3 -u orig_py.py
+==43610== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   46.65%  182.33ms        10  18.233ms  17.114ms  19.424ms  void kernelTransformReduceInnermostDimIndex<long, long, MinValuePair<long, long>>(long*, long*, long*, unsigned int, unsigned int, thrust::pair<long, long>, long)
+                   46.21%  180.62ms        10  18.062ms  17.098ms  19.422ms  void kernelTransformReduceInnermostDimIndex<long, long, MaxValuePair<long, long>>(long*, long*, long*, unsigned int, unsigned int, thrust::pair<long, long>, long)
+                    2.05%  8.0204ms        15  534.70us     864ns  6.5029ms  [CUDA memcpy HtoD]
+                    1.61%  6.2941ms        10  629.41us  596.57us  659.16us  void at::native::apply::coalesceValuesKernel<float, float>(long*, at::native::apply::coalesceValuesKernel<float, float>, float*, float, long, long, long)
+                    1.02%  3.9812ms        90  44.235us  41.824us  56.096us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__merge_sort::MergeAgent<thrust::device_ptr<long>, thrust::device_ptr<long>, long, ThrustLTOp<long, bool=0>, thrust::detail::integral_constant<bool, bool=1>>, bool, thrust::device_ptr<long>, thrust::device_ptr<long>, long, long*, long*, ThrustLTOp<long, bool=0>, long*, long>(thrust::device_ptr<long>, thrust::device_ptr<long>, long, long, bool=0, ThrustLTOp<long, bool=0>, bool, bool=1, thrust::detail::integral_constant<bool, bool=1>)
+                    0.50%  1.9513ms        10  195.13us  185.69us  207.33us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__merge_sort::BlockSortAgent<thrust::device_ptr<long>, thrust::device_ptr<long>, long, ThrustLTOp<long, bool=0>, thrust::detail::integral_constant<bool, bool=1>, thrust::detail::integral_constant<bool, bool=0>>, bool, thrust::device_ptr<long>, thrust::device_ptr<long>, long, long*, long*, ThrustLTOp<long, bool=0>>(thrust::device_ptr<long>, thrust::device_ptr<long>, long, long, bool=0, ThrustLTOp<long, bool=0>, bool)
+                    0.44%  1.7102ms        10  171.02us  166.21us  179.20us  sgemm_32x32x32_NT
+                    0.32%  1.2361ms        90  13.734us  9.0240us  17.216us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__merge_sort::PartitionAgent<thrust::device_ptr<long>, long, ThrustLTOp<long, bool=0>>, bool, thrust::device_ptr<long>, long*, long, unsigned long, long*, ThrustLTOp<long, bool=0>, long, int>(thrust::device_ptr<long>, long, long, bool=0, ThrustLTOp<long, bool=0>, thrust::cuda_cub::__merge_sort::PartitionAgent<thrust::device_ptr<long>, long, ThrustLTOp<long, bool=0>>, bool, thrust::device_ptr<long>, long*)
+                    0.27%  1.0665ms        10  106.65us  100.64us  115.87us  void csrMmt_hyb_core<float, int=4, int=4>(float, float, float const *, float const *, float const *, int const *, int const *, float const *, float*, int, int, int, int, int, int, bool)
+                    0.16%  622.24us        20  31.111us  30.591us  31.680us  _ZN2at6native18elementwise_kernelILi512ELi1EZNS0_17gpu_binary_kernelIZNS0_15add_kernel_implIlEEvRNS_14TensorIteratorEN3c106ScalarEEUlllE_EEvS5_RKT_EUliE_EEviT1_
+                    0.13%  509.92us        10  50.991us  46.816us  56.063us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__unique_by_key::UniqueByKeyAgent<thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::equal_to<long>, int, int*>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::equal_to<long>, int*, int, thrust::cuda_cub::cub::ScanTileState<int, bool=1>, unsigned long>(thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, long, thrust::equal_to<long>, int, int*, thrust::cuda_cub::__unique_by_key::UniqueByKeyAgent<thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::device_ptr<long>, thrust::equal_to<long>, int, int*>)
+                    0.12%  482.04us        20  24.102us  22.528us  25.632us  [CUDA memcpy DtoD]
+                    0.11%  426.97us        20  21.348us  20.832us  22.015us  _ZN2at6native18elementwise_kernelILi512ELi1EZNS0_16gpu_unary_kernelIZNS0_17gpu_binary_kernelIZNS0_15div_kernel_implIlEEvRNS_14TensorIteratorEEUlllE_EEvS6_RKT_EUllE0_EEvS6_SA_EUliE_EEviT1_
+                    0.11%  417.60us        10  41.759us  41.151us  43.104us  _ZN2at6native18elementwise_kernelILi128ELi4EZNS0_17gpu_binary_kernelIZNS0_15mul_kernel_implIlEEvRNS_14TensorIteratorEEUlllE_EEvS5_RKT_EUliE0_EEviT1_
+                    0.10%  394.81us        10  39.481us  37.535us  42.656us  _ZN2at6native13reduce_kernelILi512ENS0_8ReduceOpIlZNS0_15sum_kernel_implIllEEvRNS_14TensorIteratorEEUlllE_EEEEvT0_
+                    0.07%  284.35us        20  14.217us  12.896us  15.968us  _ZN2at4cuda75_GLOBAL__N__51_tmpxft_00012b8e_00000000_13_Copy_compute_75_cpp1_ii_dd3fb9a321kernelPointwiseApply2IZN75_GLOBAL__N__51_tmpxft_00012b8e_00000000_13_Copy_compute_75_cpp1_ii_dd3fb9a36CopyOpIilE5applyERNS_6TensorERKS6_EUlRiRKlE_iljLi1ELi1ELi1EEEvNS0_6detail10TensorInfoIT0_T2_EENSF_IT1_SH_EESH_T_
+                    0.05%  205.28us        20  10.263us  9.9520us  10.848us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__transform::unary_transform_f<thrust::counting_iterator<long, thrust::use_default, thrust::use_default, thrust::use_default>, thrust::device_ptr<long>, thrust::cuda_cub::__transform::no_stencil_tag, thrust::identity<long>, thrust::cuda_cub::__transform::always_true_predicate>, long>, thrust::cuda_cub::__transform::unary_transform_f<thrust::counting_iterator<long, thrust::use_default, thrust::use_default, thrust::use_default>, thrust::device_ptr<long>, thrust::cuda_cub::__transform::no_stencil_tag, thrust::identity<long>, thrust::cuda_cub::__transform::always_true_predicate>, long>(thrust::use_default, thrust::use_default)
+                    0.03%  123.14us        10  12.313us  11.520us  14.528us  void convert_CooToCsr_kernel<int=0>(int const *, int, int, int*)
+                    0.03%  121.15us        20  6.0570us  4.8640us  7.4880us  _ZN2at4cuda75_GLOBAL__N__51_tmpxft_00012b8e_00000000_13_Copy_compute_75_cpp1_ii_dd3fb9a321kernelPointwiseApply2IZN75_GLOBAL__N__51_tmpxft_00012b8e_00000000_13_Copy_compute_75_cpp1_ii_dd3fb9a36CopyOpIffE5applyERNS_6TensorERKS6_EUlRfRKfE_ffjLi1ELi2ELi1EEEvNS0_6detail10TensorInfoIT0_T2_EENSF_IT1_SH_EESH_T_
+                    0.01%  39.904us        30  1.3300us  1.1520us  2.2400us  [CUDA memcpy DtoH]
+                    0.00%  16.544us        10  1.6540us  1.4080us  1.9840us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__unique_by_key::InitAgent<thrust::cuda_cub::cub::ScanTileState<int, bool=1>, int*, int>, thrust::cuda_cub::cub::ScanTileState<int, bool=1>, unsigned long, int*>(bool=1, thrust::cuda_cub::cub::ScanTileState<int, bool=1>, int*)
+                    0.00%  8.8640us        10     886ns     800ns  1.0880us  [CUDA memset]
+      API calls:   73.51%  3.25137s        16  203.21ms  13.281us  3.24767s  cudaMalloc
+                   17.50%  773.86ms         2  386.93ms  384.80ms  389.06ms  cudaFree
+                    8.54%  377.64ms        64  5.9006ms  13.532us  39.445ms  cudaMemcpyAsync
+                    0.26%  11.412ms        64  178.32us  2.1820us  706.29us  cudaStreamSynchronize
+                    0.09%  4.1513ms       390  10.644us  6.0960us  45.200us  cudaLaunchKernel
+                    0.02%  1.0336ms       282  3.6650us     142ns  153.50us  cuDeviceGetAttribute
+                    0.02%  901.58us      1665     541ns     340ns  21.197us  cudaGetDevice
+                    0.02%  771.27us         3  257.09us  243.20us  279.90us  cuDeviceTotalMem
+                    0.02%  703.92us         2  351.96us  351.74us  352.18us  cudaGetDeviceProperties
+                    0.01%  343.11us       644     532ns     288ns  11.081us  cudaSetDevice
+                    0.01%  267.27us        70  3.8180us  2.3380us  13.868us  cudaFuncGetAttributes
+                    0.00%  167.43us        10  16.742us  12.397us  28.304us  cudaMemsetAsync
+                    0.00%  134.27us         3  44.757us  34.988us  61.513us  cuDeviceGetName
+                    0.00%  72.494us         1  72.494us  72.494us  72.494us  cudaMemcpy
+                    0.00%  71.194us       250     284ns     125ns  10.214us  cudaGetLastError
+                    0.00%  67.891us       460     147ns     100ns     280ns  cudaPeekAtLastError
+                    0.00%  53.156us       131     405ns     256ns  1.9530us  cudaDeviceGetAttribute
+                    0.00%  10.745us        16     671ns     458ns  2.1740us  cudaEventCreateWithFlags
+                    0.00%  3.4500us        13     265ns     125ns  1.0040us  cudaGetDeviceCount
+                    0.00%  2.9140us         4     728ns     320ns  1.5700us  cuDeviceGetCount
+                    0.00%  2.7420us         2  1.3710us  1.1650us  1.5770us  cuInit
+                    0.00%  1.4850us         4     371ns     231ns     565ns  cuDeviceGet
+                    0.00%  1.2950us         2     647ns     625ns     670ns  cuDriverGetVersion
+                    0.00%     786ns         3     262ns     226ns     318ns
