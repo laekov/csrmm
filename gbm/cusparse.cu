@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const int max_n = 11000;
+const int max_n = 23000;
 const int max_e = 670003;
 const int feature_0 = 1433;
 const int feature_1 = 16;

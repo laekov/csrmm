@@ -1,10 +1,10 @@
 from ctypes import cdll
 import time
 import numpy as np
+import sys
 
 
-# lib = cdll.LoadLibrary('./libcus.so')
-lib = cdll.LoadLibrary('./libspmm.so')
+lib = cdll.LoadLibrary('./lib{}.so'.format(sys.argv[1]))
 lib.prepare()
 
 if __name__ == '__main__':

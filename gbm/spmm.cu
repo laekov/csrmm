@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const int max_n = 11000;
+const int max_n = 22000;
 const int max_e = 670003;
 const int feature_0 = 1433;
 const int feature_1 = 16;
@@ -132,7 +132,7 @@ void runit() {
             f0, n,
             wei, feature_0,
             &beta, f1, n);
-    graph_add<<<128, 128, 0, stream>>>(feature_1, n, gptr, gidx, f1, f2);
+    graph_add<<<400, 64, 0, stream>>>(feature_1, n, gptr, gidx, f1, f2);
     assert(gemmStat == CUBLAS_STATUS_SUCCESS);
     cudaStreamSynchronize(stream);
 }
